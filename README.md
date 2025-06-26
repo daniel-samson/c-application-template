@@ -3,7 +3,7 @@
 A professional C project template with modern development practices and tooling.
 
 [![Continuous Integration](https://github.com/daniel-samson/c-application-template/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/daniel-samson/c-application-template/actions/workflows/continuous-integration.yml)
-[![Coverage](https://codecov.io/gh/daniel-samson/c-application-template/branch/main/graph/badge.svg)](https://codecov.io/gh/username/myproject)
+[![Coverage](https://codecov.io/gh/daniel-samson/c-application-template/branch/main/graph/badge.svg)](https://codecov.io/gh/daniel-samson/c-application-template)
 
 
 # Features
