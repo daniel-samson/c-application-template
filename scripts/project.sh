@@ -188,7 +188,7 @@ generate_gcov_report() {
     if command -v lcov >/dev/null 2>&1; then
         # Use lcov for better HTML reports
         lcov --capture --directory . --output-file coverage/coverage.info
-        lcov --remove coverage/coverage.info '/usr/*' '*/_deps/*' '*/ctest/*' --output-file coverage/coverage.info
+        lcov --ignore-errors unused --remove coverage/coverage.info '/usr/*' '*/_deps/*' '*/ctest/*' --output-file coverage/coverage.info
         lcov --list coverage/coverage.info
         
         if command -v genhtml >/dev/null 2>&1; then
