@@ -1,0 +1,116 @@
+# Build directories
+build/
+cmake-build-*/
+out/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# CLion specific
+cmake-build-debug/
+cmake-build-release/
+cmake-build-relwithdebinfo/
+cmake-build-minsizerel/
+
+# Compiled Object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Core dumps
+core
+core.*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+
+# Backup files
+*.backup
+
+# Package managers
+conan.lock
+conandata.yml
+conaninfo.txt
+conanbuildinfo.*
+
+# Test results
+*.xml
+Testing/
+CTestTestfile.cmake
+
+# Coverage reports
+*.gcov
+*.gcda
+*.gcno
+lcov.info
+coverage/
+
+# Valgrind output
+*.valgrind
+vgcore.*
+
+# Address Sanitizer
+*.asan
+
+# Memory Sanitizer  
+*.msan
+
+# Thread Sanitizer
+*.tsan 

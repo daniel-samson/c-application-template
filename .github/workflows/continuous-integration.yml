@@ -1,0 +1,69 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run weekly on Sundays at 00:00 UTC
+    - cron: '0 0 * * 0'
+
+jobs:
+  # Job for code formatting and linting
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make scripts executable
+        run: chmod +x scripts/*.sh
+        
+      - name: Setup project dependencies
+        run: ./scripts/project.sh setup
+        
+      - name: Build project
+        run: ./scripts/project.sh build
+        
+      - name: Run linting
+        run: ./scripts/project.sh lint
+  build-and-test:
+    needs: code-quality
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        build_type: [Debug]
+        include:
+          - os: ubuntu-latest
+            compiler: gcc
+            install_deps: sudo apt-get update && sudo apt-get install -y build-essential
+          # - os: windows-latest
+          #   compiler: msvc
+          #   install_deps: ""
+          # - os: macos-latest
+          #   compiler: clang
+          #   install_deps: ""
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Make scripts executable
+        run: chmod +x scripts/*.sh
+        
+      - name: Setup project dependencies
+        run: ./scripts/project.sh setup
+        
+      - name: Build project (${{ matrix.build_type }})
+        run: ./scripts/project.sh build
+        # Note: You'll need to modify project.sh to accept build type
+        
+      - name: Run tests
+        run: ./scripts/project.sh test
+        
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: test-results-${{ matrix.os }}-${{ matrix.build_type }}
+          path: cmake-build-debug/Testing/  # Fixed path
