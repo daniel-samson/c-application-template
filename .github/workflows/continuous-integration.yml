@@ -70,7 +70,7 @@ jobs:
 
   # Job for code coverage
   coverage:
-    needs: code-quality
+    needs: build-and-test
     runs-on: ubuntu-latest
     
     steps:
