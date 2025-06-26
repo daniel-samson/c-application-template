@@ -2,9 +2,9 @@
 
 A professional C project template with modern development practices and tooling.
 
-[![Build Status](https://github.com/username/app/workflows/CI/badge.svg)](https://github.com/username/myproject/actions)
-[![Coverage](https://codecov.io/gh/username/app/branch/main/graph/badge.svg)](https://codecov.io/gh/username/myproject)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://github.com/daniel-samson/c-application-template/workflows/CI/badge.svg)](https://github.com/username/myproject/actions)
+[![Coverage](https://codecov.io/gh/daniel-samson/c-application-template/branch/main/graph/badge.svg)](https://codecov.io/gh/username/myproject)
+
 
 # Features
 
