@@ -82,6 +82,7 @@ build_project() {
 run_tests() {
     print_info "Running tests..."
 
+    build_project
     cd "${BUILD_DIR}"
     ctest --extra-verbose
 
