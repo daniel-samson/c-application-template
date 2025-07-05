@@ -24,6 +24,13 @@ if(ENABLE_COVERAGE)
     endif()
 endif()
 
+# Warning flags
+if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
+elseif(CMAKE_C_COMPILER_ID MATCHES "MSVC")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W4 /WX")
+endif()
+
 # Dependencies
 include(FetchContent)
 FetchContent_Declare(
