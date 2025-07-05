@@ -83,7 +83,7 @@ build_project() {
     cd "${BUILD_DIR}"
 
     # Use the Conan-generated toolchain file
-    cmake .. -DCMAKE_BUILD_TYPE=Debug
+    cmake .. -DENABLE_ASAN=ON -DCMAKE_BUILD_TYPE=Debug
 
     cmake --build . --parallel $(nproc)
 
