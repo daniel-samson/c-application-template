@@ -1,5 +1,5 @@
 # Project Definition
-cmake_minimum_required(VERSION 3.11)
+cmake_minimum_required(VERSION 3.15)
 project(app C)
 
 set(CMAKE_C_STANDARD 17)
