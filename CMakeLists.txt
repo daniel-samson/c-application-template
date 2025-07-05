@@ -24,6 +24,26 @@ if(ENABLE_COVERAGE)
     endif()
 endif()
 
+# AddressSanitizer option
+option(ENABLE_ASAN "Enable AddressSanitizer for memory error detection" OFF)
+
+if(ENABLE_ASAN)
+    if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
+        # AddressSanitizer flags
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address -g -fno-omit-frame-pointer")
+        set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")
+        
+        # Optional: Enable leak detection (requires glibc 2.27+)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize-address-use-after-scope")
+        
+        message(STATUS "AddressSanitizer enabled")
+        message(STATUS "To enable leak detection, set environment variable: export ASAN_OPTIONS=detect_leaks=1")
+    else()
+        message(WARNING "AddressSanitizer is not supported by this compiler")
+    endif()
+endif()
+
+
 # Warning flags
 if(CMAKE_C_COMPILER_ID MATCHES "GNU|Clang")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror")
