@@ -1,6 +1,8 @@
 # Quickstart guid with clion
 1. Open project
-2. In the generator field, set it to "Let CMake Decide"
+2. In CMake options
+    1. add: -DENABLE_ASAN=ON
+    2. In the generator field, set it to "Let CMake Decide"
 3. Build project
 
 ### AddressSanitizer
