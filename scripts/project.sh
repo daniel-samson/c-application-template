@@ -57,8 +57,20 @@ setup_project() {
 
     cd "${PROJECT_ROOT}"
 
-    # Install dependencies
-    ./scripts/setup-ubuntu-24.04.sh
+    # Detect operating system
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        print_info "Detected macOS, using Homebrew setup script..."
+        ./scripts/setup-macos.sh
+    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        print_info "Detected Linux, using Ubuntu setup script..."
+        ./scripts/setup-ubuntu-24.04.sh
+    else
+        print_error "Unsupported operating system: $OSTYPE"
+        print_error "Please run the appropriate setup script manually:"
+        print_error "  - For macOS: ./scripts/setup-macos.sh"
+        print_error "  - For Ubuntu: ./scripts/setup-ubuntu-24.04.sh"
+        exit 1
+    fi
 
     print_success "Project setup completed"
 }
