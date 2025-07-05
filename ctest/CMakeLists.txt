@@ -19,5 +19,5 @@ target_link_libraries(test_app LINK_PUBLIC applib)
 
 
 # Tests
-add_test(NAME test_get_version COMMAND test_app --filter=test_get_version)
+add_test(NAME all_tests COMMAND test_app)
 
