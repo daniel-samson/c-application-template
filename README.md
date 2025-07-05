@@ -21,7 +21,7 @@ A professional C project template with modern development practices and tooling.
 
 ### Prerequisites
 
-- CMake 3.11 or higher#
+- CMake 3.15 or higher
 - C compiler with C17 support (GCC 8+, Clang 9+, MSVC 2019+)
 
 ### Installation
