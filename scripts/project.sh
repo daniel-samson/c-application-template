@@ -83,7 +83,7 @@ run_tests() {
     print_info "Running tests..."
 
     cd "${BUILD_DIR}"
-    ctest --output-on-failure
+    ctest --extra-verbose
 
     print_success "Tests completed"
 }
