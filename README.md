@@ -28,7 +28,7 @@ A professional C project template with modern development practices and tooling.
 
 1. **Clone this template repository:**
    ```bash
-   git clone https://github.com/username/c-executable-template.git myproject
+   git clone https://github.com/daniel-samson/c-application-template.git myproject
    cd myproject
    ```
 
