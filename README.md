@@ -34,8 +34,10 @@ c-application-template/
 │   ├── CMakeLists.txt          # Test configuration
 │   └── test_applib.c           # Test implementation
 ├── scripts/                    # Build and utility scripts
-│   ├── project.sh              # Main project script
-│   └── setup-ubuntu-24.04.sh   # Ubuntu dependency installer
+│   ├── project.sh              # Main project script (Linux/macOS)
+│   ├── project.ps1             # Main project script (Windows)
+│   ├── setup-ubuntu-24.04.sh   # Ubuntu dependency installer
+│   └── setup-windows.ps1       # Windows dependency installer
 ├── docs/                       # Documentation
 │   ├── Doxyfile.in             # Doxygen configuration
 │   └── quick-start-with-clion.md # IDE setup guide
@@ -66,7 +68,10 @@ c-application-template/
 ### Key Files
 
 - **`CMakeLists.txt`** - Main build configuration
-- **`project.sh`** - Primary development script with commands for building, testing, etc.
+- **`project.sh`** - Primary development script for Linux/macOS
+- **`project.ps1`** - Primary development script for Windows
+- **`setup-ubuntu-24.04.sh`** - Linux dependency installer
+- **`setup-windows.ps1`** - Windows dependency installer
 - **`.clang-format`** - Automatic code formatting configuration
 - **`.clang-tidy`** - Static analysis and linting rules
 
@@ -74,6 +79,7 @@ c-application-template/
 
 - CMake 3.15 or higher
 - C compiler with C17 support (GCC 8+, Clang 9+, MSVC 2019+)
+- **Windows users:** PowerShell 5.0+ and a package manager (WinGet, Chocolatey, or Scoop) for automatic setup
 
 ### Installation
 
@@ -84,24 +90,46 @@ c-application-template/
    ```
 
 2. **Setup dependencies:**
+   
+   **Linux/macOS:**
    ```bash
    ./scripts/project.sh setup
    ```
+   
+   **Windows:**
+   ```powershell
+   .\scripts\project.ps1 setup
+   ```
 
 3. **Build the project:**
+   
+   **Linux/macOS:**
    ```bash
    ./scripts/project.sh build
    ```
+   
+   **Windows:**
+   ```powershell
+   .\scripts\project.ps1 build
+   ```
 
 4. **Run tests:**
+   
+   **Linux/macOS:**
    ```bash
    ./scripts/project.sh test
+   ```
+   
+   **Windows:**
+   ```powershell
+   .\scripts\project.ps1 test
    ```
 
 ## Development Workflow
 
 ### Building
 
+**Linux/macOS:**
 ```bash
 # Setup and build everything
 ./scripts/project.sh all
@@ -113,8 +141,21 @@ c-application-template/
 ./scripts/project.sh docs      # Generate documentation
 ```
 
+**Windows:**
+```powershell
+# Setup and build everything
+.\scripts\project.ps1 all
+
+# Individual commands
+.\scripts\project.ps1 setup     # Install dependencies
+.\scripts\project.ps1 build     # Build project
+.\scripts\project.ps1 test      # Run tests
+.\scripts\project.ps1 docs      # Generate documentation
+```
+
 ### Code Quality
 
+**Linux/macOS:**
 ```bash
 # Format code
 ./scripts/project.sh format
@@ -126,20 +167,46 @@ c-application-template/
 ./scripts/project.sh coverage
 ```
 
+**Windows:**
+```powershell
+# Format code
+.\scripts\project.ps1 format
+
+# Run static analysis
+.\scripts\project.ps1 lint
+
+# Generate coverage report
+.\scripts\project.ps1 coverage
+```
+
 ## Testing
 
-The project uses the Unity testing framework. Tests are located in the `tests/` directory.
+The project uses the Unity testing framework. Tests are located in the `ctest/` directory.
 
-Run all tests:
+**Run all tests:**
+
+**Linux/macOS:**
 ```bash
 ./scripts/project.sh test
 ```
 
+**Windows:**
+```powershell
+.\scripts\project.ps1 test
+```
+
 ## Documentation
 
-Generate documentation with Doxygen:
+**Generate documentation with Doxygen:**
+
+**Linux/macOS:**
 ```bash
 ./scripts/project.sh docs
+```
+
+**Windows:**
+```powershell
+.\scripts\project.ps1 docs
 ```
 
 Documentation will be available in `build/docs/html/index.html`.
