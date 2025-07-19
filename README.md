@@ -226,8 +226,8 @@ See [CHANGELOG.md](CHANGELOG.md) for version history.
 ## Support
 
 - 📖 [Documentation](build/docs/html/index.html)
-- 🐛 [Issue Tracker](https://github.com/username/myproject/issues)
-- 💬 [Discussions](https://github.com/username/myproject/discussions)
+- 🐛 [Issue Tracker](https://github.com/daniel-samson/c-application-template/issues)
+- 💬 [Discussions](https://github.com/daniel-samson/c-application-template/discussions)
 
 ## Acknowledgments
 
