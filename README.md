@@ -19,6 +19,57 @@ A professional C project template with modern development practices and tooling.
 - 💻 Multiple IDE support
 - 📁 Professional project structure
 
+## Project Structure
+
+```
+c-application-template/
+├── app/                        # Application entry point
+│   └── main.c                  # Main application file
+├── src/                        # Library source files
+│   └── app.c                   # Core application logic
+├── include/                    # Public header files
+│   └── app/
+│       └── app.h               # Main application header
+├── ctest/                      # Unit tests
+│   ├── CMakeLists.txt          # Test configuration
+│   └── test_applib.c           # Test implementation
+├── scripts/                    # Build and utility scripts
+│   ├── project.sh              # Main project script
+│   └── setup-ubuntu-24.04.sh   # Ubuntu dependency installer
+├── docs/                       # Documentation
+│   ├── Doxyfile.in             # Doxygen configuration
+│   └── quick-start-with-clion.md # IDE setup guide
+├── .github/                    # GitHub workflows
+│   └── workflows/
+│       └── continuous-integration.yml # CI/CD pipeline
+├── cmake-build-debug/          # Build output (generated)
+├── CMakeLists.txt              # Main CMake configuration
+├── .clang-format               # Code formatting rules
+├── .clang-tidy                 # Static analysis rules
+├── .gitignore                  # Git ignore patterns
+├── README.md                   # Project documentation
+├── CHANGELOG.md                # Version history
+└── CONTRIBUTING.md             # Contribution guidelines
+```
+
+### Directory Descriptions
+
+- **`app/`** - Contains the main application entry point (`main.c`)
+- **`src/`** - Library source files that implement core functionality
+- **`include/`** - Public header files that define the API
+- **`ctest/`** - Unit tests using the Unity testing framework
+- **`scripts/`** - Helper scripts for building, testing, and development
+- **`docs/`** - Documentation files and configuration
+- **`.github/`** - GitHub Actions workflows for CI/CD
+- **`cmake-build-debug/`** - Generated build directory (not in version control)
+
+### Key Files
+
+- **`CMakeLists.txt`** - Main build configuration
+- **`project.sh`** - Primary development script with commands for building, testing, etc.
+- **`.clang-format`** - Automatic code formatting configuration
+- **`.clang-tidy`** - Static analysis and linting rules
+
 ### Prerequisites
 
 - CMake 3.15 or higher
