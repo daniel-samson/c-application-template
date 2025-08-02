@@ -49,6 +49,11 @@ show_usage() {
     echo "  install        - Install the project"
     echo "  all            - Run setup, build, test, and docs"
     echo "  help           - Show this help message"
+    echo ""
+    echo "Supported platforms:"
+    echo "  - macOS (using Homebrew)"
+    echo "  - Arch Linux (using pacman)"
+    echo "  - Debian/Ubuntu (using apt)"
 }
 
 # Setup project dependencies
@@ -62,12 +67,33 @@ setup_project() {
         print_info "Detected macOS, using Homebrew setup script..."
         ./scripts/setup-macos.sh
     elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        print_info "Detected Linux, using Ubuntu setup script..."
-        ./scripts/setup-ubuntu-24.04.sh
+        # Detect Linux distribution
+        if command -v pacman >/dev/null 2>&1; then
+            print_info "Detected Arch Linux, using Arch setup script..."
+            ./scripts/setup-arch.sh
+        elif command -v apt-get >/dev/null 2>&1; then
+            print_info "Detected Debian/Ubuntu, using Ubuntu setup script..."
+            ./scripts/setup-ubuntu-24.04.sh
+        elif command -v dnf >/dev/null 2>&1; then
+            print_error "Fedora/RHEL/CentOS detected but not yet supported"
+            print_error "Please create a setup script for your distribution or run setup manually"
+            exit 1
+        elif command -v zypper >/dev/null 2>&1; then
+            print_error "openSUSE detected but not yet supported"
+            print_error "Please create a setup script for your distribution or run setup manually"
+            exit 1
+        else
+            print_error "Unsupported Linux distribution"
+            print_error "Please run the appropriate setup script manually:"
+            print_error "  - For Arch Linux: ./scripts/setup-arch.sh"
+            print_error "  - For Ubuntu: ./scripts/setup-ubuntu-24.04.sh"
+            exit 1
+        fi
     else
         print_error "Unsupported operating system: $OSTYPE"
         print_error "Please run the appropriate setup script manually:"
         print_error "  - For macOS: ./scripts/setup-macos.sh"
+        print_error "  - For Arch Linux: ./scripts/setup-arch.sh"
         print_error "  - For Ubuntu: ./scripts/setup-ubuntu-24.04.sh"
         exit 1
     fi
